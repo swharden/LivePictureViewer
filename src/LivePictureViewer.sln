@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32210.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "src", "LivePictureViewer\src.csproj", "{0CC0C991-615B-432D-B90C-56B2ECD608B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivePictureViewer", "LivePictureViewer\LivePictureViewer.csproj", "{0CC0C991-615B-432D-B90C-56B2ECD608B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
