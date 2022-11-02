@@ -2,14 +2,16 @@ namespace LivePictureViewer;
 
 public partial class Form1 : Form
 {
-    public string ImagePath;
+    string ImagePath = string.Empty;
+    DateTime ImageModifiedDate = DateTime.Now;
+    TimeSpan ImageAge => DateTime.Now - ImageModifiedDate;
 
     public Form1()
     {
         InitializeComponent();
         comboBox1.SelectedIndex = 0;
 
-        string defaultImagePath = @"../../../../dev/data/blue-red.png";
+        string defaultImagePath = @"../../../../../dev/data/blue-red.png";
         if (File.Exists(defaultImagePath))
             LoadImage(defaultImagePath);
     }
@@ -23,16 +25,22 @@ public partial class Form1 : Form
     public void LoadImage(string path)
     {
         path = Path.GetFullPath(path);
+
         if (!File.Exists(path))
             throw new FileNotFoundException(path);
+
+        var bytes = File.ReadAllBytes(path);
+        MemoryStream ms = new(bytes);
+        Image bmp = Bitmap.FromStream(ms);
 
         ImagePath = path;
 
         Image originalImage = pictureBox1.Image;
-        pictureBox1.Image = Bitmap.FromFile(path);
+        pictureBox1.Image = bmp;
         originalImage?.Dispose();
 
         Text = $"{Path.GetFileName(path)} ({pictureBox1.Image.Width}x{pictureBox1.Image.Height})";
+        ImageModifiedDate = File.GetLastWriteTime(path);
     }
 
     private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -47,12 +55,18 @@ public partial class Form1 : Form
 
     private void Form1_DragEnter(object sender, DragEventArgs e)
     {
+        if (e.Data is null)
+            return;
+
         if (e.Data.GetDataPresent(DataFormats.FileDrop))
             e.Effect = DragDropEffects.Copy;
     }
 
     private void Form1_DragDrop(object sender, DragEventArgs e)
     {
+        if (e.Data is null)
+            return;
+
         string[] paths = (string[])e.Data.GetData(DataFormats.FileDrop);
         LoadImage(paths[0]);
     }
@@ -69,5 +83,53 @@ public partial class Form1 : Form
             "Blue" => Color.Blue,
             _ => throw new NotImplementedException(),
         };
+    }
+
+    private void timer1_Tick(object sender, EventArgs e)
+    {
+        if (ImageAge.TotalSeconds < 60)
+        {
+            lblImageAge.Text = $"{ImageAge.TotalSeconds:N2} sec";
+        }
+        else if (ImageAge.TotalMinutes < 60)
+        {
+            lblImageAge.Text = $"{ImageAge.TotalMinutes:N1} min";
+        }
+        else
+        {
+            lblImageAge.Text = string.Empty;
+        }
+
+        if (ImageAge.TotalSeconds < 5)
+        {
+            lblImageAge.BackColor = Color.Yellow;
+            lblImageAge.ForeColor = Color.Magenta;
+        }
+        else if (ImageAge.TotalSeconds < 60)
+        {
+            lblImageAge.BackColor = SystemColors.Control;
+            lblImageAge.ForeColor = Color.Magenta;
+        }
+        else
+        {
+            lblImageAge.BackColor = SystemColors.Control;
+            lblImageAge.ForeColor = SystemColors.GrayText;
+        }
+    }
+
+    private void cbAutoRefresh_CheckedChanged(object sender, EventArgs e)
+    {
+        timer2.Enabled = cbAutoRefresh.Checked;
+    }
+
+    private void timer2_Tick(object sender, EventArgs e)
+    {
+        if (string.IsNullOrEmpty(ImagePath))
+            return;
+
+        if (cbAutoRefresh.Checked && (File.GetLastWriteTime(ImagePath) != ImageModifiedDate))
+        {
+            ReloadImage();
+        }
     }
 }
