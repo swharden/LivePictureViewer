@@ -127,4 +127,9 @@ public partial class Form1 : Form
             ReloadImage();
         }
     }
+
+    private void pictureBox1_Click(object sender, EventArgs e)
+    {
+        ReloadImage();
+    }
 }
