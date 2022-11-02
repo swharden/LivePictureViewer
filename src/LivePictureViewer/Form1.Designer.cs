@@ -130,7 +130,6 @@ partial class Form1
             this.cbAutoRefresh.TabIndex = 8;
             this.cbAutoRefresh.Text = "AutoRefresh";
             this.cbAutoRefresh.UseVisualStyleBackColor = true;
-            this.cbAutoRefresh.CheckedChanged += new System.EventHandler(this.cbAutoRefresh_CheckedChanged);
             // 
             // timer2
             // 

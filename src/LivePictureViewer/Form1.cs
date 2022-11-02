@@ -117,11 +117,6 @@ public partial class Form1 : Form
         }
     }
 
-    private void cbAutoRefresh_CheckedChanged(object sender, EventArgs e)
-    {
-        timer2.Enabled = cbAutoRefresh.Checked;
-    }
-
     private void timer2_Tick(object sender, EventArgs e)
     {
         if (string.IsNullOrEmpty(ImagePath))
