@@ -38,6 +38,7 @@ partial class Form1
             this.lblImageAge = new System.Windows.Forms.Label();
             this.cbAutoRefresh = new System.Windows.Forms.CheckBox();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.btnSelect = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -57,7 +58,7 @@ partial class Form1
             // cbActualSize
             // 
             this.cbActualSize.AutoSize = true;
-            this.cbActualSize.Location = new System.Drawing.Point(14, 10);
+            this.cbActualSize.Location = new System.Drawing.Point(70, 10);
             this.cbActualSize.Name = "cbActualSize";
             this.cbActualSize.Size = new System.Drawing.Size(83, 19);
             this.cbActualSize.TabIndex = 2;
@@ -89,7 +90,7 @@ partial class Form1
             "Red",
             "Green",
             "Blue"});
-            this.comboBox1.Location = new System.Drawing.Point(181, 7);
+            this.comboBox1.Location = new System.Drawing.Point(237, 7);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(85, 23);
             this.comboBox1.TabIndex = 5;
@@ -98,7 +99,7 @@ partial class Form1
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(103, 11);
+            this.label1.Location = new System.Drawing.Point(159, 11);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 15);
             this.label1.TabIndex = 6;
@@ -113,7 +114,7 @@ partial class Form1
             // lblImageAge
             // 
             this.lblImageAge.AutoSize = true;
-            this.lblImageAge.Location = new System.Drawing.Point(369, 11);
+            this.lblImageAge.Location = new System.Drawing.Point(425, 11);
             this.lblImageAge.Name = "lblImageAge";
             this.lblImageAge.Size = new System.Drawing.Size(54, 15);
             this.lblImageAge.TabIndex = 7;
@@ -124,7 +125,7 @@ partial class Form1
             this.cbAutoRefresh.AutoSize = true;
             this.cbAutoRefresh.Checked = true;
             this.cbAutoRefresh.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbAutoRefresh.Location = new System.Drawing.Point(272, 10);
+            this.cbAutoRefresh.Location = new System.Drawing.Point(328, 10);
             this.cbAutoRefresh.Name = "cbAutoRefresh";
             this.cbAutoRefresh.Size = new System.Drawing.Size(91, 19);
             this.cbAutoRefresh.TabIndex = 8;
@@ -137,12 +138,23 @@ partial class Form1
             this.timer2.Interval = 1000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
+            // btnSelect
+            // 
+            this.btnSelect.Location = new System.Drawing.Point(12, 7);
+            this.btnSelect.Name = "btnSelect";
+            this.btnSelect.Size = new System.Drawing.Size(52, 23);
+            this.btnSelect.TabIndex = 9;
+            this.btnSelect.Text = "Select";
+            this.btnSelect.UseVisualStyleBackColor = true;
+            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
+            // 
             // Form1
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(557, 363);
+            this.Controls.Add(this.btnSelect);
             this.Controls.Add(this.cbAutoRefresh);
             this.Controls.Add(this.lblImageAge);
             this.Controls.Add(this.label1);
@@ -172,4 +184,5 @@ partial class Form1
     private Label lblImageAge;
     private CheckBox cbAutoRefresh;
     private System.Windows.Forms.Timer timer2;
+    private Button btnSelect;
 }

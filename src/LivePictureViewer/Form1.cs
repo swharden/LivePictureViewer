@@ -184,4 +184,20 @@ public partial class Form1 : Form
     {
         ReloadImage();
     }
+
+    private void btnSelect_Click(object sender, EventArgs e)
+    {
+        OpenFileDialog diag = new()
+        {
+            Filter = "JPG Files (*.jpg, *.jpeg)|*.jpg;*.jpeg" +
+            "|PNG Files (*.png)|*.png;*.png" +
+            "|BMP Files (*.bmp)|*.bmp;*.bmp" +
+            "|All files (*.*)|*.*"
+        };
+
+        if (diag.ShowDialog() == DialogResult.OK)
+        {
+            LoadImage(diag.FileName);
+        }
+    }
 }
