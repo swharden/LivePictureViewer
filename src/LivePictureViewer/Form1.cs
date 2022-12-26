@@ -1,3 +1,5 @@
+using System.Windows.Forms;
+
 namespace LivePictureViewer;
 
 public partial class Form1 : Form
@@ -45,9 +47,20 @@ public partial class Form1 : Form
 
     private void checkBox1_CheckedChanged(object sender, EventArgs e)
     {
-        pictureBox1.SizeMode = cbActualSize.Checked
-            ? PictureBoxSizeMode.AutoSize
-            : PictureBoxSizeMode.Zoom;
+        if (cbActualSize.Checked)
+        {
+            pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
+            pictureBox1.Size = pictureBox1.Image.Size;
+            pictureBox1.Dock = DockStyle.None;
+            panel1.AutoScroll = true;
+        }
+        else
+        {
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.Size = panel1.Size;
+            pictureBox1.Dock = DockStyle.Fill;
+            panel1.AutoScroll = false;
+        }
     }
 
     private void button1_Click(object sender, EventArgs e)
@@ -75,7 +88,7 @@ public partial class Form1 : Form
 
     private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
     {
-        pictureBox1.BackColor = comboBox1.Text switch
+        Color color = comboBox1.Text switch
         {
             "Gray" => Color.Gray,
             "Black" => Color.Black,
@@ -85,6 +98,8 @@ public partial class Form1 : Form
             "Blue" => Color.Blue,
             _ => throw new NotImplementedException(),
         };
+        pictureBox1.BackColor = color;
+        panel1.BackColor = color;
     }
 
     private void timer1_Tick(object sender, EventArgs e)
