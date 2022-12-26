@@ -150,6 +150,7 @@ partial class Form1
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.cbActualSize);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Live Picture Viewer";
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Form1_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form1_DragEnter);
