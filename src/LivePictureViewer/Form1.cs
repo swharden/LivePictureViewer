@@ -45,7 +45,9 @@ public partial class Form1 : Form
 
     private void checkBox1_CheckedChanged(object sender, EventArgs e)
     {
-        pictureBox1.SizeMode = checkBox1.Checked ? PictureBoxSizeMode.Zoom : PictureBoxSizeMode.AutoSize;
+        pictureBox1.SizeMode = cbActualSize.Checked
+            ? PictureBoxSizeMode.AutoSize
+            : PictureBoxSizeMode.Zoom;
     }
 
     private void button1_Click(object sender, EventArgs e)

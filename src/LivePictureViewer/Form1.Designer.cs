@@ -30,7 +30,7 @@ partial class Form1
     {
             this.components = new System.ComponentModel.Container();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.cbActualSize = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -54,18 +54,16 @@ partial class Form1
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // checkBox1
+            // cbActualSize
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(14, 10);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(39, 19);
-            this.checkBox1.TabIndex = 2;
-            this.checkBox1.Text = "Fit";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.cbActualSize.AutoSize = true;
+            this.cbActualSize.Location = new System.Drawing.Point(14, 10);
+            this.cbActualSize.Name = "cbActualSize";
+            this.cbActualSize.Size = new System.Drawing.Size(83, 19);
+            this.cbActualSize.TabIndex = 2;
+            this.cbActualSize.Text = "Actual Size";
+            this.cbActualSize.UseVisualStyleBackColor = true;
+            this.cbActualSize.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // panel1
             // 
@@ -90,7 +88,7 @@ partial class Form1
             "Red",
             "Green",
             "Blue"});
-            this.comboBox1.Location = new System.Drawing.Point(135, 7);
+            this.comboBox1.Location = new System.Drawing.Point(181, 7);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(85, 23);
             this.comboBox1.TabIndex = 5;
@@ -99,7 +97,7 @@ partial class Form1
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(57, 11);
+            this.label1.Location = new System.Drawing.Point(103, 11);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 15);
             this.label1.TabIndex = 6;
@@ -114,7 +112,7 @@ partial class Form1
             // lblImageAge
             // 
             this.lblImageAge.AutoSize = true;
-            this.lblImageAge.Location = new System.Drawing.Point(323, 11);
+            this.lblImageAge.Location = new System.Drawing.Point(369, 11);
             this.lblImageAge.Name = "lblImageAge";
             this.lblImageAge.Size = new System.Drawing.Size(54, 15);
             this.lblImageAge.TabIndex = 7;
@@ -125,7 +123,7 @@ partial class Form1
             this.cbAutoRefresh.AutoSize = true;
             this.cbAutoRefresh.Checked = true;
             this.cbAutoRefresh.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbAutoRefresh.Location = new System.Drawing.Point(226, 10);
+            this.cbAutoRefresh.Location = new System.Drawing.Point(272, 10);
             this.cbAutoRefresh.Name = "cbAutoRefresh";
             this.cbAutoRefresh.Size = new System.Drawing.Size(91, 19);
             this.cbAutoRefresh.TabIndex = 8;
@@ -149,7 +147,7 @@ partial class Form1
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.cbActualSize);
             this.Name = "Form1";
             this.Text = "Live Picture Viewer";
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Form1_DragDrop);
@@ -164,7 +162,7 @@ partial class Form1
     #endregion
 
     private PictureBox pictureBox1;
-    private CheckBox checkBox1;
+    private CheckBox cbActualSize;
     private Panel panel1;
     private ComboBox comboBox1;
     private Label label1;
