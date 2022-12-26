@@ -13,10 +13,25 @@ public partial class Form1 : Form
     {
         InitializeComponent();
         comboBox1.SelectedIndex = 0;
+        FormClosing += Form1_FormClosing;
 
         string defaultImagePath = @"../../../../../dev/data/blue-red.png";
         if (File.Exists(defaultImagePath))
             LoadImage(defaultImagePath);
+    }
+
+    private void Form1_FormClosing(object? sender, FormClosingEventArgs e)
+    {
+        DialogResult dialogResult = MessageBox.Show(
+            text: "Are you sure you want to exit?",
+            caption: "Exit",
+            buttons: MessageBoxButtons.YesNo,
+            icon: MessageBoxIcon.Question);
+
+        if (dialogResult == DialogResult.No)
+        {
+            e.Cancel = true;
+        }
     }
 
     public void ReloadImage()
