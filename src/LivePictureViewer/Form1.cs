@@ -1,3 +1,4 @@
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace LivePictureViewer;
@@ -24,25 +25,44 @@ public partial class Form1 : Form
             LoadImage(ImagePath);
     }
 
+    private void ClearImage()
+    {
+
+    }
+
     public void LoadImage(string path)
     {
         path = Path.GetFullPath(path);
 
         if (!File.Exists(path))
-            throw new FileNotFoundException(path);
+        {
+            System.Diagnostics.Debug.WriteLine(path);
+            Text = "FILE NOT FOUND";
+            panel1.Visible = false;
+            return;
+        }
 
-        var bytes = File.ReadAllBytes(path);
-        MemoryStream ms = new(bytes);
-        Image bmp = Bitmap.FromStream(ms);
+        try
+        {
+            var bytes = File.ReadAllBytes(path);
+            MemoryStream ms = new(bytes);
+            Image bmp = Bitmap.FromStream(ms);
+            Image originalImage = pictureBox1.Image;
+            pictureBox1.Image = bmp;
+            originalImage?.Dispose();
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine(ex.Message);
+            Text = "INVALID IMAGE";
+            panel1.Visible = false;
+            return;
+        }
 
         ImagePath = path;
-
-        Image originalImage = pictureBox1.Image;
-        pictureBox1.Image = bmp;
-        originalImage?.Dispose();
-
         Text = $"{Path.GetFileName(path)} ({pictureBox1.Image.Width}x{pictureBox1.Image.Height})";
         ImageModifiedDate = File.GetLastWriteTime(path);
+        panel1.Visible = true;
     }
 
     private void checkBox1_CheckedChanged(object sender, EventArgs e)
