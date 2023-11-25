@@ -11,6 +11,7 @@ public partial class Form2 : Form
         InitializeComponent();
         SetupDragDrop();
 
+        Text = Version.FullName;
         ImageTimer.Start();
         ImageTimer.Tick += (s, e) => UpdateGuiState();
         Manager.ImageFileChanged += (s, e) => ImageToShow = e;
