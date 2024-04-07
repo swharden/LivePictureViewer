@@ -1,6 +1,6 @@
 ﻿namespace LivePictureViewer;
 
-partial class Form2
+partial class WatchFolder
 {
     /// <summary>
     /// Required designer variable.

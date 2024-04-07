@@ -1,12 +1,12 @@
 ﻿namespace LivePictureViewer;
 
-public partial class Form2 : Form
+public partial class WatchFolder : Form
 {
     readonly LivePictureManager Manager = new();
     readonly System.Windows.Forms.Timer ImageTimer = new() { Interval = 10 };
     string? ImageToShow = null;
 
-    public Form2()
+    public WatchFolder()
     {
         InitializeComponent();
         SetupDragDrop();
@@ -14,7 +14,7 @@ public partial class Form2 : Form
         Text = Version.FullName;
         ImageTimer.Start();
         ImageTimer.Tick += (s, e) => UpdateGuiState();
-        Manager.ImageFileChanged += (s, e) => ImageToShow = e;
+        Manager.ImageFileChanged += (s, e) => { ImageToShow = e; pictureBox1.ImageLocation = null; };
         pictureBox1.MouseClick += (s, e) => { if (e.Button == MouseButtons.Right) LaunchRightClickMenu(); };
 
         FormClosing += (s, e) =>
@@ -34,8 +34,8 @@ public partial class Form2 : Form
             }
         };
 
-        Manager.Watch(@"C:\Users\scott\Documents\GitHub\ScottPlot\src\ScottPlot4\ScottPlot.Tests\bin");
-        Manager.ShowImage(@"C:\Users\scott\Documents\important\zoom-logo.jpeg");
+        Manager.Watch(@"C:\Users\scott\Documents\GitHub\ScottPlot\src\ScottPlot5\ScottPlot5 Tests\bin\Debug\net6.0\test-images");
+        //Manager.ShowImage(@"C:\Users\scott\Documents\important\zoom-logo.jpeg");
     }
 
     void SetupDragDrop()
