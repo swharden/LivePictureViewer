@@ -19,5 +19,12 @@ public partial class Menu : Form
             new WatchFile().ShowDialog();
             Close();
         };
+
+        button3.Click += (s, e) =>
+        {
+            Hide();
+            new WatchFolder2().ShowDialog();
+            Close();
+        };
     }
 }

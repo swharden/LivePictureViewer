@@ -30,6 +30,7 @@ partial class Menu
     {
         button1 = new Button();
         button2 = new Button();
+        button3 = new Button();
         SuspendLayout();
         // 
         // button1
@@ -50,11 +51,21 @@ partial class Menu
         button2.Text = "File";
         button2.UseVisualStyleBackColor = true;
         // 
+        // button3
+        // 
+        button3.Location = new Point(12, 60);
+        button3.Name = "button3";
+        button3.Size = new Size(75, 42);
+        button3.TabIndex = 2;
+        button3.Text = "Folder";
+        button3.UseVisualStyleBackColor = true;
+        // 
         // Menu
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
-        ClientSize = new Size(194, 67);
+        ClientSize = new Size(194, 117);
+        Controls.Add(button3);
         Controls.Add(button2);
         Controls.Add(button1);
         Name = "Menu";
@@ -67,4 +78,5 @@ partial class Menu
 
     private Button button1;
     private Button button2;
+    private Button button3;
 }
